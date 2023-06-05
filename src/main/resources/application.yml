@@ -1,0 +1,53 @@
+server:
+  servlet:
+    context-path: /api
+  port: 9081
+
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: tnspecification-mui
+
+---
+spring:
+  profiles: dev
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tnspecification?useSSL=false&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 50
+        max-idle: 50
+        min-idle: 5
+        max-wait: 6000
+    timeout: 10000
+    database: 3
+  data: 
+    mongodb:
+      uri: mongodb://admin:123456@localhost:27017
+      database: tnsection
+      authentication-database: admin
+      
+#服务器文件上传地址，保留后斜杠
+file:
+  # client访问的虚拟地址
+  static: /static/
+  # 文件存储绝对地址
+  absolute: D:/files/
+
+
+
